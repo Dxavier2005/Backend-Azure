@@ -53,7 +53,7 @@ export class MensajesController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const mensaje = await this.mensajesService.remove(id);

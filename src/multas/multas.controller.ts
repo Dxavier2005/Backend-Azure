@@ -19,7 +19,7 @@ export class MultasController {
   constructor(private readonly service: MultasService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Post()
   async create(@Body() dto: CreateMultaDto) {
     const multa = await this.service.create(dto);
@@ -50,7 +50,7 @@ export class MultasController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Put(':id')
   async update(@Param('id') id: string, @Body() dto: UpdateMultaDto) {
     const multa = await this.service.update(id, dto);
@@ -59,7 +59,7 @@ export class MultasController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const multa = await this.service.remove(id);

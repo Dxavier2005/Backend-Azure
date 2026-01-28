@@ -10,6 +10,7 @@ import { User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { QueryDto } from 'src/common/dto/query.dto';
+import { UserRole } from './user-role.enum';
 
 @Injectable()
 export class UsersService {
@@ -23,7 +24,7 @@ export class UsersService {
       const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
       const user = this.userRepository.create({
         ...createUserDto,
-        role: createUserDto.role ?? 'user',
+        role: createUserDto.role ?? UserRole.USER,
         password: hashedPassword,
       });
       return await this.userRepository.save(user);
@@ -42,9 +43,10 @@ export class UsersService {
 
       const query = this.userRepository.createQueryBuilder('user');
 
+      /*
       if (isActive !== undefined) {
         query.andWhere('user.isActive = :isActive', { isActive });
-      }
+      }*/
 
       if (search) {
         if (searchField) {

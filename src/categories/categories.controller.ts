@@ -20,7 +20,7 @@ export class CategoriesController {
   constructor(private readonly service: CategoriesService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Post()
   async create(@Body() dto: CreateCategoriesDto) {
     const category = await this.service.create(dto);
@@ -57,7 +57,7 @@ export class CategoriesController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Put(':id')
   async update(
     @Param('id') id: string,
@@ -71,7 +71,7 @@ export class CategoriesController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const category = await this.service.remove(id);

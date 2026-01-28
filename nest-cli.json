@@ -3,6 +3,18 @@
   "collection": "@nestjs/schematics",
   "sourceRoot": "src",
   "compilerOptions": {
-    "deleteOutDir": true
-  }
+    "deleteOutDir": true,
+    "assets": [],
+    "watchAssets": false
+  },
+  "exclude": [
+    "**/*.tsx",
+    "src/pages/**",
+    "src/components/**",
+    "src/context/**",
+    "src/api/**",
+    "src/styles/**",
+    "src/main.tsx",
+    "src/App.tsx"
+  ]
 }

@@ -19,7 +19,7 @@ export class EstadoLibroController {
   constructor(private readonly service: EstadoLibroService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Post()
   async create(@Body() dto: CreateEstadoLibroDto) {
     const estadoLibro = await this.service.create(dto);
@@ -50,7 +50,7 @@ export class EstadoLibroController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Put(':id')
   async update(@Param('id') id: string, @Body() dto: UpdateEstadoLibroDto) {
     const estadoLibro = await this.service.update(id, dto);
@@ -59,7 +59,7 @@ export class EstadoLibroController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const estadoLibro = await this.service.remove(id);

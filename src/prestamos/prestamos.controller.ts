@@ -19,7 +19,7 @@ export class PrestamosController {
   constructor(private readonly service: PrestamosService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Post()
   async create(@Body() dto: CreatePrestamoDto) {
     const prestamo = await this.service.create(dto);
@@ -50,7 +50,7 @@ export class PrestamosController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Put(':id')
   async update(@Param('id') id: string, @Body() dto: UpdatePrestamoDto) {
     const prestamo = await this.service.update(id, dto);
@@ -59,7 +59,7 @@ export class PrestamosController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const prestamo = await this.service.remove(id);

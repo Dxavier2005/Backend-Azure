@@ -19,7 +19,7 @@ export class ReservasController {
   constructor(private readonly service: ReservasService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Post()
   async create(@Body() dto: CreateReservaDto) {
     const reserva = await this.service.create(dto);
@@ -50,7 +50,7 @@ export class ReservasController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Put(':id')
   async update(@Param('id') id: string, @Body() dto: UpdateReservaDto) {
     const reserva = await this.service.update(id, dto);
@@ -59,7 +59,7 @@ export class ReservasController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const reserva = await this.service.remove(id);

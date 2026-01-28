@@ -19,7 +19,7 @@ export class IdiomasController {
   constructor(private readonly service: IdiomasService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Post()
   async create(@Body() dto: CreateIdiomaDto) {
     const idioma = await this.service.create(dto);
@@ -50,7 +50,7 @@ export class IdiomasController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Put(':id')
   async update(@Param('id') id: string, @Body() dto: UpdateIdiomaDto) {
     const idioma = await this.service.update(id, dto);
@@ -59,7 +59,7 @@ export class IdiomasController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const idioma = await this.service.remove(id);

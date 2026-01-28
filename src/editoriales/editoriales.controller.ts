@@ -19,7 +19,7 @@ export class EditorialesController {
   constructor(private readonly service: EditorialesService) {}
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Post()
   async create(@Body() dto: CreateEditorialDto) {
     const editorial = await this.service.create(dto);
@@ -50,7 +50,7 @@ export class EditorialesController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Put(':id')
   async update(@Param('id') id: string, @Body() dto: UpdateEditorialDto) {
     const editorial = await this.service.update(id, dto);
@@ -59,7 +59,7 @@ export class EditorialesController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const editorial = await this.service.remove(id);

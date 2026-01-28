@@ -65,7 +65,7 @@ export class ComentariosController {
   }
 
   @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('admin')
+  @Roles('ADMIN')
   @Delete(':id')
   async remove(@Param('id') id: string) {
     const comentario = await this.comentariosService.remove(id);

@@ -13,7 +13,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:5173', // Vite
       'http://localhost:3000', // si tu front usa este
-      'https://higuera-posts-ui.desarrollo-software.xyz',
+      'https://librosecuador.desarrollo-software.xyz/',
 
     ],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],

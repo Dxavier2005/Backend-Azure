@@ -18,8 +18,7 @@ import { QueryDto } from 'src/common/dto/query.dto';
 export class PrestamosController {
   constructor(private readonly service: PrestamosService) {}
 
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @Roles('ADMIN')
+  @UseGuards(JwtAuthGuard)
   @Post()
   async create(@Body() dto: CreatePrestamoDto) {
     const prestamo = await this.service.create(dto);

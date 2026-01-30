@@ -25,7 +25,6 @@ import { QueryDto } from '../common/dto/query.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  // ✅ CREATE USER (ADMIN ONLY)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN')
   @Post()
@@ -34,7 +33,6 @@ export class UsersController {
     return new SuccessResponseDto('User created successfully', user);
   }
 
-  // ✅ LIST USERS (ADMIN ONLY)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN')
   @Get()
@@ -63,7 +61,6 @@ export class UsersController {
     return new SuccessResponseDto('Users retrieved successfully', result);
   }
 
-  // ✅ VIEW USER (AUTH REQUIRED)
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOne(@Param('id') id: string) {
@@ -72,7 +69,6 @@ export class UsersController {
     return new SuccessResponseDto('User retrieved successfully', user);
   }
 
-  // ✅ DELETE USER (ADMIN ONLY)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles('ADMIN')
   @Delete(':id')
@@ -82,7 +78,6 @@ export class UsersController {
     return new SuccessResponseDto('User deleted successfully', user);
   }
 
-  // ✅ UPLOAD PROFILE (AUTH REQUIRED)
   @UseGuards(JwtAuthGuard)
   @Put('profile/:id')
   @UseInterceptors(FileInterceptor('profile', {
@@ -110,7 +105,6 @@ export class UsersController {
     return new SuccessResponseDto('Profile image updated', user);
   }
 
-  // ✅ UPDATE USER (AUTH REQUIRED)
   @UseGuards(JwtAuthGuard)
   @Put(':id')
   async update(@Param('id') id: string, @Body() dto: UpdateUserDto) {

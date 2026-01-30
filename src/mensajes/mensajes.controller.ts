@@ -21,7 +21,7 @@ import { SuccessResponseDto } from 'src/common/dto/response.dto';
 export class MensajesController {
   constructor(private readonly mensajesService: MensajesService) {}
 
-  @UseGuards(JwtAuthGuard)
+  
   @Post()
   async create(@Body() dto: CreateMensajeDto) {
     const mensaje = await this.mensajesService.create(dto);

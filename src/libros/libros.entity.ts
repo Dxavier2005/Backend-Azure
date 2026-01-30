@@ -34,4 +34,7 @@ export class Libro {
 
   @Column({ nullable: true })
   estado_id: string;
+
+  @Column({ nullable: true })
+  imagen_url: string;
 }

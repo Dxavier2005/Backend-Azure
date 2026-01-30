@@ -40,4 +40,8 @@ export class UpdateLibroDto {
   @IsOptional()
   @IsString()
   estado_id?: string;
+
+  @IsOptional()
+  @IsString()
+  imagen_url?: string;
 }
